@@ -1,9 +1,26 @@
 <template>
   <div class="container mx-auto">
-    <h1 class="text-4xl flex justify-start items-center mt-8 mb-4">
+    <!-- <h1 class="text-4xl flex justify-start items-center mt-8 mb-4">
       <span class="mr-4">Card Shuffling in</span>
       <img class="h-8" src="https://vuejs.org/images/logo.png" />
-    </h1>
+    </h1> -->
+    <!-- <div class="main-buttons py-4">
+      <button class="button is-primary" @click="shuffleDeck">
+        Shuffle <i class="fas fa-random"></i>
+        Shuffle <fa icon="random" />
+      </button>
+    </div> -->
+
+    <div class="flex justify-center py-4">
+      <button
+        class="bg-green-300 hover:bg-green-400 text-green-800 font-bold py-2 px-4 rounded inline-flex items-center focus:outline-none"
+        @click="shuffleDeck"
+      >
+        <span class="pr-2">Shuffle</span>
+        <fa icon="random" />
+      </button>
+    </div>
+
     <div class="deck">
       <div
         v-for="card in cards"
@@ -41,6 +58,7 @@
 </template>
 
 <script>
+import Vue from 'vue'
 // import { faJs } from '@fortawesome/free-brands-svg-icons'
 
 export default {
@@ -83,6 +101,15 @@ export default {
           this.cards.push(card)
           id++
         }
+      }
+    },
+    shuffleDeck() {
+      for (let i = this.cards.length - 1; i > 0; i--) {
+        const randomIndex = Math.floor(Math.random() * i)
+
+        const temp = this.cards[i]
+        Vue.set(this.cards, i, this.cards[randomIndex])
+        Vue.set(this.cards, randomIndex, temp)
       }
     }
   }
