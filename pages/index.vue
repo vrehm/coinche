@@ -1,73 +1,36 @@
 <template>
-  <div class="container">
-    <div>
-      <logo />
-      <h1 class="title">
-        coinche
-      </h1>
-      <h2 class="subtitle">
-        POC du jeu de la coinche !
-      </h2>
-      <div class="links">
-        <a href="https://nuxtjs.org/" target="_blank" class="button--green">
-          Documentation
-        </a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey"
-        >
-          GitHub
-        </a>
-      </div>
-    </div>
+  <div class="container mx-auto flex justify-center">
+    <fa icon="cog" />
+    <fa-layers class="fa-4x">
+      <fa icon="circle" />
+      <fa icon="check" transform="shrink-6" :style="{ color: 'white' }" />
+    </fa-layers>
+    <fa-layers full-width class="fa-4x">
+      <fa icon="calendar" />
+      <fa-layers-text
+        transform="shrink-8 down-3"
+        value="27"
+        class="fa-inverse"
+      />
+    </fa-layers>
+
+    <p style="font-size: 3rem">
+      We <fa icon="heart" /> <fa :icon="fab.faJs" />,
+      <fa :icon="['fab', 'node']" /> & <fa :icon="['fab', 'vuejs']" />
+    </p>
   </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
+import { faJs } from '@fortawesome/free-brands-svg-icons'
 
 export default {
-  components: {
-    Logo
+  computed: {
+    fab() {
+      return {
+        faJs
+      }
+    }
   }
 }
 </script>
-
-<style>
-/* Sample `apply` at-rules with Tailwind CSS
-.container {
-  @apply min-h-screen flex justify-center items-center text-center mx-auto;
-}
-*/
-.container {
-  margin: 0 auto;
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-.title {
-  font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
-    'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  display: block;
-  font-weight: 300;
-  font-size: 100px;
-  color: #35495e;
-  letter-spacing: 1px;
-}
-
-.subtitle {
-  font-weight: 300;
-  font-size: 42px;
-  color: #526488;
-  word-spacing: 5px;
-  padding-bottom: 15px;
-}
-
-.links {
-  padding-top: 15px;
-}
-</style>
