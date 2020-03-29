@@ -49,17 +49,17 @@ body,
 }
 
 .deck {
-    margin-left: 30px;
-    padding-top: 30px;
+    /* margin-left: 30px; */
+    /* padding-top: 30px; */
 }
 
 .card {
-    width: 75px;
-    height: 100px;
+    width: 150px;
+    height: 200px;
     float: left;
-    margin-right: 5px;
-    margin-bottom: 5px;
-    border-radius: 2px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    border-radius: 4px;
 }
 
 .card__suit {

@@ -5,10 +5,15 @@
       <img class="h-8" src="https://vuejs.org/images/logo.png" />
     </h1>
     <div class="deck">
-      <div class="relative bg-white card">
-        <span class="card__suit card__suit--top">♣</span>
-        <span class="card__number">A</span>
-        <span class="card__suit card__suit--bottom">♣</span>
+      <div
+        v-for="card in cards"
+        :key="card.id"
+        class="relative bg-white card"
+        :class="suitColor[card.suit]"
+      >
+        <span class="card__suit card__suit--top">{{ card.suit }}</span>
+        <span class="card__number">{{ card.rank }} </span>
+        <span class="card__suit card__suit--bottom">{{ card.suit }}</span>
       </div>
     </div>
   </div>
@@ -36,13 +41,48 @@
 </template>
 
 <script>
-import { faJs } from '@fortawesome/free-brands-svg-icons'
+// import { faJs } from '@fortawesome/free-brands-svg-icons'
 
 export default {
-  computed: {
-    fab() {
-      return {
-        faJs
+  data() {
+    return {
+      ranks: ['7', '8', '9', '10', 'J', 'Q', 'K', 'A'],
+      // ranks: ['A', '2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K'],
+      suits: ['♥', '♦', '♠', '♣'],
+      cards: [],
+      suitColor: {
+        '♠': 'black',
+        '♣': 'black',
+        '♦': 'red',
+        '♥': 'red'
+      }
+    }
+  },
+  // computed: {
+  //   fab() {
+  //     return {
+  //       faJs
+  //     }
+  //   }
+  // },
+  created() {
+    this.displayInitialDeck()
+  },
+  methods: {
+    displayInitialDeck() {
+      let id = 1
+      this.cards = []
+
+      for (let s = 0; s < this.suits.length; s++) {
+        for (let r = 0; r < this.ranks.length; r++) {
+          const card = {
+            id,
+            rank: this.ranks[r],
+            suit: this.suits[s]
+          }
+          this.cards.push(card)
+          id++
+        }
       }
     }
   }
