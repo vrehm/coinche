@@ -1,6 +1,6 @@
 <template>
   <div class="container mx-auto">
-    <h1 class="text-4xl flex justify-start items-center my-16">
+    <h1 class="text-4xl flex justify-start items-center mt-8 mb-4">
       <span class="mr-4">Card Shuffling in</span>
       <img class="h-8" src="https://vuejs.org/images/logo.png" />
     </h1>
