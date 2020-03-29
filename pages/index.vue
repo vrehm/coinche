@@ -21,7 +21,7 @@
       </button>
     </div>
 
-    <div class="deck">
+    <transition-group :name="shuffleSpeed" tag="div" class="deck">
       <div
         v-for="card in cards"
         :key="card.id"
@@ -32,7 +32,7 @@
         <span class="card__number">{{ card.rank }} </span>
         <span class="card__suit card__suit--bottom">{{ card.suit }}</span>
       </div>
-    </div>
+    </transition-group>
   </div>
 
   <!-- <div class="container mx-auto flex justify-center">
@@ -73,7 +73,8 @@ export default {
         '♣': 'black',
         '♦': 'red',
         '♥': 'red'
-      }
+      },
+      shuffleSpeed: 'shuffleMedium'
     }
   },
   // computed: {
